@@ -1,0 +1,68 @@
+import java.util.Scanner;
+public class Bank {
+    String name;
+    long acc;
+    String type;
+    double bal;
+    Bank(String name, long acc, String type, double bal) {
+        this.name = name;
+        this.acc = acc;
+        this.type = type;
+        this.bal = bal;
+    }
+    void deposit(double amount) {
+        bal += amount;
+    }
+    boolean withdraw(double amount) {
+        if(bal >= amount) {
+            bal -= amount;
+            return true;
+        }
+        return false;
+    }
+    void display() {
+        System.out.println("Name: " + name);
+        System.out.println("Account No: " + acc);
+        System.out.println("Type: " + type);
+        System.out.println("Balance: " + bal);
+    }
+}
+class bank {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter the details of the customer (name, accountNo, type, balance)");
+        System.out.println("Enter the name of the customer");
+        String name = sc.nextLine();
+        System.out.println("Enter the account no");
+        long acc = sc.nextLong();
+        System.out.println("Enter the type of customer");
+        String type = sc.next();
+        System.out.println("Enter the balance");
+        double balance = sc.nextDouble();
+        Bank obj = new Bank(name, acc, type, balance);
+        int ch;
+        do {
+            System.out.println("Press 1 to deposit money\nPress 2 to withdraw money\nPress 3 to display the details\nPress 4 to exit");
+            ch = sc.nextInt();
+            switch (ch) {
+                case 1:
+                    System.out.println("Enter the amount to deposit: ");
+                    obj.deposit(sc.nextDouble());
+                    break;
+                case 2:
+                    System.out.println("Enter the amount to withdraw: ");
+                    if(!obj.withdraw(sc.nextDouble())) {
+                        System.out.println("You don't have enough money");
+                    }
+                    break;
+                case 3:
+                    obj.display();
+                    break;
+                case 4:
+                    System.exit(0);
+                default:
+                    System.out.println("Invalid choice");
+            }
+        }while (true);
+    }
+}
