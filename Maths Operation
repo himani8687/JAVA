@@ -1,0 +1,20 @@
+class mathop {
+    static final double pi = 3.14159265358979323846;
+    static int a;
+    static int b;
+    static double multiply(double a, double b) {
+        return a*b;
+    }
+    static double divide(double a, double b) {
+        if(b==0)
+            return 0;
+        return a/b;
+    }
+}
+class Test {
+    public static void main(String[] args) {
+        System.out.println("Dividing:"+mathop.divide(2.0, 3.0));
+        System.out.println("Multiplying:"+mathop.multiply(2.0, 3.0));
+        System.out.println("Pi="+mathop.pi);
+    }
+}
