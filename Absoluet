@@ -1,0 +1,31 @@
+import java.util.Scanner;
+class absolute {
+    int abs(int a) {
+        if(a<0)
+            return a*-1;
+        return a;
+    }
+    float abs(float a) {
+        if(a<0)
+            return a*-1;
+        return a;
+    }
+    double abs(double a) {
+        if(a<0)
+            return a*-1;
+        return a;
+    }
+}
+class Absolute {
+    public static void main(String[] args) {
+        absolute obj = new absolute();
+        System.out.println("Enter an integer,float double number");
+        Scanner sc = new Scanner(System.in);
+        int a = sc.nextInt();
+        float b = sc.nextFloat();
+        double c = sc.nextDouble();
+        System.out.println("Integer absolute:"+obj.abs(a));
+        System.out.println("Float absolute:"+obj.abs(b));
+        System.out.println("Double absolute:"+obj.abs(c));
+    }
+}
