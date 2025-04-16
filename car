@@ -1,0 +1,26 @@
+class CarClass {
+    int speed;
+    void carStart() {
+        this.speed = 30;
+    }
+    void carSlow() {
+        this.speed = 20;
+    }
+    void carFast() {
+        this.speed = 40;
+    }
+    void printSpeed() {
+        System.out.println(speed);
+    }
+}
+class carclass {
+    public static void main(String[] args) {
+        CarClass car = new CarClass();
+        car.carStart();
+        car.printSpeed();
+        car.carSlow();
+        car.printSpeed();
+        car.carFast();
+        car.printSpeed();
+    }
+}
