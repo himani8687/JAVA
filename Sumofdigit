@@ -1,0 +1,21 @@
+import java.util.Scanner;
+
+public class sod {
+    int sumOfDigits(int n) {
+        int s = 0;
+        for(int i = n;i>0;i/=10) {
+            s += i%10;
+        }
+        return s;
+    }
+}
+class Driver {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        sod obj = new sod();
+        System.out.println("Enter a number:");
+        int n = sc.nextInt();
+        int s = obj.sumOfDigits(n);
+        System.out.println("Sum of digits of "+n+" is "+s);
+    }
+}
