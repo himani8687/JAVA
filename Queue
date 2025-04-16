@@ -1,0 +1,85 @@
+import java.util.Scanner;
+class queue {
+    int[] q;
+    int c;
+    int front;
+    int rear;
+    int size;
+    queue(int size) {
+        q = new int[size];
+        front = -1;
+        rear = -1;
+        c=0;
+        this.size = size;
+    }
+    void insert(int x) {
+        if(c==size) {
+            System.out.println("queue overflow");
+            return;
+        }
+        if(rear==-1 && front==-1) {
+            front = 0;
+        }
+        rear++;
+        q[rear%size] = x;
+        c++;
+        System.out.println("insert " + x + " into queue");
+    }
+    void remove() {
+        if(front==-1) {
+            System.out.println("queue underflow");
+            return;
+        }
+        System.out.println("Removed "+q[front%size]+" from queue");
+        if(front==rear) {
+            front = -1;
+            rear = -1;
+        }
+        else
+            front++;
+        c--;
+    }
+    void display() {
+        if(front==-1) {
+            System.out.println("queue underflow");
+            return;
+        }
+        for(int i=front;i<=rear;i++) {
+            if(i>=size) {
+                System.out.print(q[i%size]+ " ");
+            }
+            else {
+                System.out.print(q[i]+" ");
+            }
+        }
+    }
+}
+class test {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("enter the size of the queue");
+        int n = sc.nextInt();
+        queue q = new queue(n);
+        do {
+            System.out.println("Press 1 to insert\nPress 2 to remove\nPress 3 to display\nPress 4 to exit");
+            int choice = sc.nextInt();
+            switch(choice) {
+                case 1:
+                    System.out.println("Enter the element to insert");
+                    q.insert(sc.nextInt());
+                    break;
+                case 2:
+                    q.remove();
+                    break;
+                case 3:
+                    q.display();
+                    break;
+                case 4:
+                    System.exit(0);
+                default:
+                    System.out.println("Invalid choice");
+                    break;
+            }
+        }while (true);
+    }
+}
