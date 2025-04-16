@@ -1,0 +1,31 @@
+import java.util.Scanner;
+public class box {
+    int length;
+    int breadth;
+    int height;
+    box(int l,int b,int h) {
+        length = l;
+        breadth = b;
+        height = h;
+    }
+    box(int a) {
+        length = breadth = height = a;
+    }
+    box() {
+        length = breadth = height = 0;
+    }
+    int volume() {
+        return length*breadth*height;
+    }
+}
+class Box {
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        box box1 = new box();
+        box box2 = new box(10);
+        box box3 = new box(19,29,39);
+        System.out.println("box1="+box1.volume());
+        System.out.println("box2="+box2.volume());
+        System.out.println("box3="+box3.volume());
+    }
+}
