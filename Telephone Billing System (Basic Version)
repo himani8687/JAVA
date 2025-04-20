@@ -1,0 +1,55 @@
+import java.util.Scanner;
+
+public class TelephoneBilling {
+
+    public static int calculateLocalCallUnits(int duration) {
+        return (int) Math.ceil(duration / 3.0);
+    }
+
+    public static double calculateSTDRate(int duration, String time, String originCode, String destCode) {
+        double baseRate = 1.0; // default per minute rate
+        if (time.equalsIgnoreCase("night")) {
+            baseRate = 0.8;
+        } else if (time.equalsIgnoreCase("evening")) {
+            baseRate = 0.9;
+        }
+
+        // You can customize more conditions based on area codes
+        if (!originCode.equals(destCode)) {
+            baseRate += 0.5;
+        }
+
+        return baseRate * duration;
+    }
+
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Choose Call Type: 1. Local 2. STD");
+        int choice = sc.nextInt();
+
+        if (choice == 1) {
+            System.out.print("Enter duration in minutes: ");
+            int duration = sc.nextInt();
+            int units = calculateLocalCallUnits(duration);
+            System.out.println("Local Call Units: " + units);
+        } else if (choice == 2) {
+            System.out.print("Enter duration in minutes: ");
+            int duration = sc.nextInt();
+            sc.nextLine(); // consume newline
+            System.out.print("Enter time of call (morning/evening/night): ");
+            String time = sc.nextLine();
+            System.out.print("Enter origin STD code: ");
+            String origin = sc.nextLine();
+            System.out.print("Enter destination STD code: ");
+            String dest = sc.nextLine();
+
+            double cost = calculateSTDRate(duration, time, origin, dest);
+            System.out.println("STD Call Cost: ₹" + cost);
+        } else {
+            System.out.println("Invalid Choice");
+        }
+
+        sc.close();
+    }
+}
