@@ -1,0 +1,66 @@
+class Vehicle {
+    protected String licenseNumber;
+    protected int speed;
+    protected String color;
+    protected String ownerName;
+
+    public Vehicle(String licenseNumber, int speed, String color, String ownerName) {
+        this.licenseNumber = licenseNumber;
+        this.speed = speed;
+        this.color = color;
+        this.ownerName = ownerName;
+    }
+
+    public void showData() {
+        System.out.println("This is a vehicle class");
+    }
+}
+
+class Bus extends Vehicle {
+    private int routeNo;
+
+    public Bus(String licenseNumber, int speed, String color, String ownerName, int routeNo) {
+        super(licenseNumber, speed, color, ownerName);
+        this.routeNo = routeNo;
+    }
+
+    public void showData() {
+        super.showData();
+        System.out.println("Bus Details:");
+        System.out.println("License Number: " + licenseNumber);
+        System.out.println("Speed: " + speed);
+        System.out.println("Color: " + color);
+        System.out.println("Owner Name: " + ownerName);
+        System.out.println("Route Number: " + routeNo);
+    }
+}
+
+class Car extends Vehicle {
+    private String manufacturerName;
+
+    public Car(String licenseNumber, int speed, String color, String ownerName, String manufacturerName) {
+        super(licenseNumber, speed, color, ownerName);
+        this.manufacturerName = manufacturerName;
+    }
+
+    public void showData() {
+        super.showData();
+        System.out.println("Car Details:");
+        System.out.println("License Number: " + licenseNumber);
+        System.out.println("Speed: " + speed);
+        System.out.println("Color: " + color);
+        System.out.println("Owner Name: " + ownerName);
+        System.out.println("Manufacturer Name: " + manufacturerName);
+    }
+}
+
+public class InheritanceTest {
+    public static void main(String[] args) {
+        Bus bus = new Bus("DL01AB1234", 60, "Red", "Amit", 5);
+        Car car = new Car("DL02XY5678", 100, "Black", "Ravi", "Hyundai");
+
+        bus.showData();
+        System.out.println();
+        car.showData();
+    }
+}
